@@ -15,7 +15,6 @@ class Solution{
             
             if(count[a[i]] == k)
             {
-                // cout << a[i] ;
                 return a[i];
             }
         }
