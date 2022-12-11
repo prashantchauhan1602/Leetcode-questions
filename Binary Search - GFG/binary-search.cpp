@@ -24,13 +24,10 @@ class Solution {
             if(arr[mid] > k)
             {
                 end = mid - 1 ;
-                // return binarysearch(arr , start , mid - 1) ;
             }
             else{
                 start = mid + 1 ;
-                // return binarysearch(arr , mid + 1 , end) ;
             }
-            // return binarysearch(arr , start , end) ;
         }
         return -1 ;
     }
