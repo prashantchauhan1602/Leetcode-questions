@@ -14,13 +14,13 @@ public:
         
         while(starting_row <= ending_row && starting_col  <= ending_col && value <= total)
         {
-            for(int i = starting_col ; i <= ending_col && starting_row <= ending_row && starting_col  <= ending_col ; i++)
+            for(int i = starting_col ; i <= ending_col ; i++)
             {
                 arr[starting_row][i] = value++ ;
             }
             starting_row++ ;
             
-            for(int i = starting_row ; i <= ending_row && starting_row <= ending_row && starting_col  <= ending_col; i++)
+            for(int i = starting_row ; i <= ending_row ; i++)
             {
                 arr[i][ending_col] = value++ ;
             }
