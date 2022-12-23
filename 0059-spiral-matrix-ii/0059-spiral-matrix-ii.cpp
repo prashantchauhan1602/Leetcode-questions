@@ -7,7 +7,7 @@ public:
         int starting_col = 0 ;
         int ending_col = n - 1 ;
         
-        vector<vector<int>> arr (n , vector<int> (n , 0));
+        vector<vector<int>> arr (n , vector<int> (n));
 
         int value = 1;
         int total = n * n ;
