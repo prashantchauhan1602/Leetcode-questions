@@ -18,7 +18,6 @@ class Solution {
 public:
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> ans ;
-        // vectot<int> output ;
         int index = 0 ;
         solve(nums , ans , index) ;
         return ans ;
