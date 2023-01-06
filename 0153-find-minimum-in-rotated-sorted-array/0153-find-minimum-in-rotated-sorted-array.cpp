@@ -18,7 +18,7 @@ public:
                 return (nums[mid + 1]);
             }
             
-            if(nums[mid] < nums[mid - 1] && mid > start)
+            if(nums[mid] < nums[mid - 1])
             {
                 return nums[mid];
             }
