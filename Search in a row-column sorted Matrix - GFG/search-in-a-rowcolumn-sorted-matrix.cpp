@@ -13,6 +13,14 @@ class Solution
     {
         int start = 0 ; 
         int end = m - 1 ;
+        
+        int smallest = matrix[0][0] ;
+        int largest = matrix[n-1][m-1] ;
+        if(x < smallest || x > largest)
+        {
+            return false ;
+        }
+        
         while(start < n && end >= 0)
         {
             if(matrix[start][end] == x)
