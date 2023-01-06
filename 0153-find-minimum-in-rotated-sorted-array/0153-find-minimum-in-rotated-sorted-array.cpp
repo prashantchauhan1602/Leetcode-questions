@@ -13,7 +13,7 @@ public:
         while(start <= end)
         {
             mid = (start + end) / 2 ;
-            if(nums[mid] > nums[mid + 1] && mid < end)
+            if(nums[mid] > nums[mid + 1] )
             {
                 return (nums[mid + 1]);
             }
