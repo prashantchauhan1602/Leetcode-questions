@@ -58,17 +58,17 @@ class Solution
            return root ;
        }
        
-       if(leftAns != NULL && rightAns == NULL)
+       else if(leftAns != NULL && rightAns == NULL)
        {
            return leftAns ;
        }
        
-       if(leftAns == NULL && rightAns != NULL)
+       else if(leftAns == NULL && rightAns != NULL)
        {
            return rightAns ;
        }
        
-       if(leftAns == NULL && rightAns == NULL)
+       else if(leftAns == NULL && rightAns == NULL)
        {
            return NULL ;
        }
