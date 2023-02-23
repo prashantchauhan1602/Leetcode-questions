@@ -17,25 +17,16 @@ public:
         {
             if(curr -> val == val)
             {
-                cout << 1 ;
                 return curr;
             }
         
             if(curr -> val > val )
             {
-                // searchBST(root -> left , val) ;
                 curr = curr -> left ;
             }
             else{
-                // searchBST(root -> right , val) ;
                 curr = curr -> right ;
             }
-            
-            // TreeNode* temp = curr ;
-            // if(temp != NULL)
-            // {
-            //     cout << "Hello ji" ;
-            // }
         }
         return curr ;
     }
