@@ -31,7 +31,8 @@ public:
         }
         bool lefty = Symmetry(root1 -> left  , root2 -> right) ;
         bool righty = Symmetry(root1 -> right , root2 -> left) ;
-        if(lefty == false || righty == false)
+        // if(lefty == false || righty == false)
+        if(!lefty || !righty)
         {
             return false ;
         }
