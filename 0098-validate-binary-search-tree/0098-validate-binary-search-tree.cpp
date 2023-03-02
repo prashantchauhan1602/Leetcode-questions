@@ -22,16 +22,39 @@ public:
         inorderTraversal(root -> right , ans) ;
     }
     
-    bool isValidBST(TreeNode* root) {
-        vector<int> ans ;
-        inorderTraversal(root , ans) ;
-        for(int i = 0 ; i < ans.size() -1 ; i++)
+    bool validate(TreeNode* root ,long mini , long maxi)
+    {
+        if(root == NULL)
         {
-            if(ans[i] >= ans[i+1])
-            {
-                return false ;
-            }
+            return true ;
         }
-        return true ;
+        
+        if(root -> val <= mini || root -> val >= maxi)
+        {
+            return false ;
+        }
+        
+        bool leftside = validate(root -> left , mini , root -> val) ;
+        bool rightside = validate(root -> right , root -> val , maxi);
+        return (leftside && rightside) ;
+    
+    }
+    
+    bool isValidBST(TreeNode* root) {
+        // int mini = INT_MIN ;
+        // int maxi = INT_MAX ;
+        
+        return validate(root ,LONG_MIN ,LONG_MAX) ;
+        
+        // vector<int> ans ;
+        // inorderTraversal(root , ans) ;
+        // for(int i = 0 ; i < ans.size() -1 ; i++)
+        // {
+        //     if(ans[i] >= ans[i+1])
+        //     {
+        //         return false ;
+        //     }
+        // }
+        // return true ;
     }
 };
