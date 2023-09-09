@@ -13,17 +13,23 @@ public:
         // }
         
         // string ans ="";
-        vector<pair<int,char>>pairs;
-        for(int i=0; i<size;i++){
-            pairs.push_back(make_pair(indices[i], s[i])); 
-        }
+//         vector<pair<int,char>>pairs;
+//         for(int i=0; i<size;i++){
+//             pairs.push_back(make_pair(indices[i], s[i])); 
+//         }
         
-        sort(pairs.begin(),pairs.end());
+//         sort(pairs.begin(),pairs.end());
         
+//         for(int i=0; i<size; i++){
+//             ans.push_back(pairs[i].second);
+//         }
+        
+//         return ans;
+        
+        string temp = s;
         for(int i=0; i<size; i++){
-            ans.push_back(pairs[i].second);
+            s[indices[i]] = temp[i];
         }
-        
-        return ans;
+        return s;
     }
 };
