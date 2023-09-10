@@ -10,8 +10,9 @@ public:
         
         vector<pair<int,char>>vec;
         for(auto it:map){
-            pair<int,char> prr = make_pair(it.second, it.first);
-            vec.push_back(prr);
+            // pair<int,char> prr = make_pair(it.second, it.first);
+            // vec.push_back(prr);
+            vec.push_back(make_pair(it.second, it.first));
         }
         string str="";
         sort(vec.begin(),vec.end());
