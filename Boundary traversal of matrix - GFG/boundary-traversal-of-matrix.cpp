@@ -17,37 +17,26 @@ class Solution
         int e_col = m-1;
         
         vector<int>ans;
-        // int total = 2*m + 2*(n-2); 
-        // while(total){
+        
+        for(int i=s_col; i<=e_col; i++){
+            ans.push_back(matrix[s_row][i]);
+        }
+        s_row++;
             
-            for(int i=s_col; i<=e_col; i++){
-                ans.push_back(matrix[s_row][i]);
-                // total--;
-            }
-            s_row++;
+        for(int i=s_row; i<=e_row; i++){
+            ans.push_back(matrix[i][e_col]);
+        }
+        e_col--;
             
-            for(int i=s_row; i<=e_row; i++){
-                ans.push_back(matrix[i][e_col]);
-                // total--;
-            }
-            e_col--;
+        for(int i=e_col; i>=s_col && s_row <= e_row; i--){
+            ans.push_back(matrix[e_row][i]);
+        }
+        e_row--;
             
+        for(int i=e_row; i>=s_row && s_col <= e_col; i--){
+            ans.push_back(matrix[i][s_col]);
+        }
             
-            for(int i=e_col; i>=s_col && s_row <= e_row; i--){
-                ans.push_back(matrix[e_row][i]);
-                // total--;
-            }
-            e_row--;
-            
-            
-            for(int i=e_row; i>=s_row && s_col <= e_col; i--){
-                ans.push_back(matrix[i][s_col]);
-                // total--;
-            }
-            // s_col++;
-            
-            
-        // }
         return ans;
     }
 };
