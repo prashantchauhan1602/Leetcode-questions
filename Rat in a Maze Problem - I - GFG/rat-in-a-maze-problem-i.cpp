@@ -11,6 +11,10 @@ using namespace std;
 class Solution{
     public:
     
+    int dx[4] = {1, 0, -1, 0};
+    int dy[4] = {0, 1, 0, -1};
+    char direction[4] = {'D', 'R', 'U', 'L'};
+        
     bool isSafe(vector<vector<int>>&m,int x_cords,int y_cords,int& n, vector<vector<bool>>&visited){
         if( (x_cords >= 0 && x_cords < n) && (y_cords >=0 && y_cords < n) && (visited[x_cords][y_cords] == false) && m[x_cords][y_cords] == 1){
             return true;
@@ -20,8 +24,6 @@ class Solution{
         }
     }
     void solve(vector<vector<int>>&m,int x_cords,int y_cords,int& n,vector<vector<bool>>&visited,string path,vector<string>&ans){
-        int row = n-1;
-        int col = n- 1;
         
         if(m[0][0] == 0){
             return;
@@ -65,6 +67,35 @@ class Solution{
             visited[x_cords][y_cords] = false;
         }
     }
+    
+    void solveShort(vector<vector<int>>&m,int x_cords,int y_cords,int& n,vector<vector<bool>>&visited,string path,vector<string>&ans){
+        if(m[0][0] == 0){
+            return;
+        }
+        else{
+            visited[0][0] = true;
+        }
+        
+        
+        // base case...
+        if(x_cords == n-1 && y_cords == n-1){
+            ans.push_back(path);
+            return;
+        }
+        
+        
+        for(int i=0; i<4; i++){
+            int new_xcord = x_cords + dx[i];
+            int new_ycord = y_cords + dy[i];
+            char dir = direction[i];
+            
+            if(isSafe(m, new_xcord, new_ycord, n, visited)){
+                visited[new_xcord][new_ycord] = true;
+                solveShort(m,new_xcord,new_ycord,n,visited,path+dir,ans);
+                visited[new_xcord][new_ycord] = false;
+            }
+        }
+    }
     vector<string> findPath(vector<vector<int>> &m, int n) {
         vector<vector<bool>>visited(n, vector<bool>(n, false));
         vector<string>ans;
@@ -72,7 +103,9 @@ class Solution{
         int x_cords = 0;
         int y_cords = 0;
         
-        solve(m, x_cords, y_cords,n, visited, path, ans);
+        // solve(m, x_cords, y_cords,n, visited, path, ans);
+        solveShort(m, x_cords, y_cords,n, visited, path, ans);
+        
         return ans;
         
     }
