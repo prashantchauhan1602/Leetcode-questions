@@ -11,61 +11,70 @@ using namespace std;
 class Solution{
     public:
     
-    bool isSafe(vector<vector<int>> &m, int newx , int newy, int &n, vector<vector<bool>> &visited){
-        
-        if( (newx >= 0 && newx <n) && (newy >=0 && newy < n) && (m[newx][newy] != 0) && (visited[newx][newy] != 1)){
+    bool isSafe(vector<vector<int>>&m,int x_cords,int y_cords,int& n, vector<vector<bool>>&visited){
+        if( (x_cords >= 0 && x_cords < n) && (y_cords >=0 && y_cords < n) && (visited[x_cords][y_cords] == false) && m[x_cords][y_cords] == 1){
             return true;
         }
         else{
             return false;
         }
     }
-    
-    void solve(vector<vector<int>> &m, vector<string>&ans, int x, int y, string path, int &n, vector<vector<bool>>&visited){
+    void solve(vector<vector<int>>&m,int x_cords,int y_cords,int& n,vector<vector<bool>>&visited,string path,vector<string>&ans){
+        int row = n-1;
+        int col = n- 1;
         
-        // Base Case...
-        if(x == n-1 && y == n-1){
+        if(m[0][0] == 0){
+            return;
+        }
+        else{
+            visited[0][0] = true;
+        }
+        
+        
+        // base case...
+        if(x_cords == n-1 && y_cords == n-1){
             ans.push_back(path);
-            return ;
+            return;
         }
         
-        // Movement : D , L , R , U...
-        
-        if(isSafe(m, x+1, y, n, visited)){
-            visited[x][y] = 1;
-            solve(m, ans,  x+1, y, path + 'D',n,visited);
-            visited[x][y] = 0;
+        // Down...
+        if(isSafe(m, x_cords+1, y_cords, n, visited)){
+            visited[x_cords][y_cords] = true;
+            solve(m,x_cords+1,y_cords,n,visited,path+'D',ans);
+            visited[x_cords][y_cords] = false;
         }
         
-        if(isSafe(m, x, y-1, n, visited)){
-            visited[x][y] = 1;
-            solve(m, ans,  x, y-1, path + 'L', n, visited);
-            visited[x][y] = 0;
+        // Right....
+        if(isSafe(m, x_cords, y_cords+1, n, visited)){
+            visited[x_cords][y_cords] = true;
+            solve(m,x_cords,y_cords+1,n,visited,path+'R',ans);
+            visited[x_cords][y_cords] = false;
         }
         
-        if(isSafe(m, x, y+1, n, visited)){
-            visited[x][y] = 1;
-            solve(m, ans,  x, y+1, path + 'R', n, visited);
-            visited[x][y] = 0;
+        // Up...
+        if(isSafe(m, x_cords-1, y_cords, n, visited)){
+            visited[x_cords][y_cords] = true;
+            solve(m,x_cords-1,y_cords,n,visited,path+'U',ans);
+            visited[x_cords][y_cords] = false;
         }
         
-        if(isSafe(m, x-1, y, n, visited)){
-            visited[x][y] = 1;
-            solve(m, ans,  x-1, y, path + 'U', n, visited);
-            visited[x][y] = 0;
+        // Left...
+        if(isSafe(m, x_cords, y_cords-1, n, visited)){
+            visited[x_cords][y_cords] = true;
+            solve(m,x_cords,y_cords-1,n,visited,path+'L',ans);
+            visited[x_cords][y_cords] = false;
         }
     }
     vector<string> findPath(vector<vector<int>> &m, int n) {
+        vector<vector<bool>>visited(n, vector<bool>(n, false));
         vector<string>ans;
-        vector<vector<bool>>visited(n, vector<bool>(n,0));
+        string path="";
+        int x_cords = 0;
+        int y_cords = 0;
         
-        string path = "";
-        
-        if(m[0][0] == 0){
-            return ans;
-        }
-        solve(m, ans, 0 , 0, path,n, visited);
+        solve(m, x_cords, y_cords,n, visited, path, ans);
         return ans;
+        
     }
 };
 
