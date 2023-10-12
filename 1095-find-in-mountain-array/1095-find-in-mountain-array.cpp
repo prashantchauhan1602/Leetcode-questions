@@ -65,16 +65,20 @@ public:
         int pvtIdx = findMountainEle(mountainArr,target,0,mountainArr.length()-1);
         cout << pvtIdx << endl;
         int i_idx = binarySearch(mountainArr,0,pvtIdx,target);
-        int d_idx = binarySearchReverse(mountainArr,pvtIdx+1, mountainArr.length()-1,target);
-        // cout << i_idx << " " << d_idx << endl;
-        if(i_idx == -1 && d_idx != -1){
-            return d_idx;
+        if(i_idx == -1){
+            i_idx = binarySearchReverse(mountainArr,pvtIdx+1, mountainArr.length()-1,target);
         }
-        else if(i_idx != -1 && d_idx == -1){
-            return i_idx;
-        }
-        else{
-            return min(i_idx, d_idx);
-        }
+        return i_idx;
+         
+        
+        // if(i_idx == -1 && d_idx != -1){
+        //     return d_idx;
+        // }
+        // else if(i_idx != -1 && d_idx == -1){
+        //     return i_idx;
+        // }
+        // else{
+        //     return min(i_idx, d_idx);
+        // }
     }
 };
