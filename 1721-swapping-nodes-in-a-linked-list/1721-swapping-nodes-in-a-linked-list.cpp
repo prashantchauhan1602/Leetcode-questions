@@ -33,7 +33,7 @@ public:
             temp = temp -> next;
             right--;
         }
-        // cout << leftNode -> val << rightNode -> val << endl;
+        
         if(leftNode != NULL && rightNode != NULL){
              swap(leftNode ->val , rightNode->val);
         }
