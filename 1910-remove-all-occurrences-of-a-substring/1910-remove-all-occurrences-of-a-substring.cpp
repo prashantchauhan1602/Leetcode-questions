@@ -14,8 +14,20 @@ public:
             return;
         }
     }
-    string removeOccurrences(string s, string part) {
-        removeOccRE(s,part);
+    
+    string solve(string s, string part){
+        
+        int index = s.find(part);
+        while(index != -1){
+            s.erase(index, part.length());
+            index = s.find(part);
+        }
+        
         return s;
+    }
+    string removeOccurrences(string s, string part) {
+        // removeOccRE(s,part);
+        return solve(s,part);
+        // return s;
     }
 };
